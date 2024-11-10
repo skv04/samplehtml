@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .header {
+        color: lightblue;
+        background-color: rgb(92, 88, 88);
+        padding: 20px;
+        font-size: 35px;
+        text-align: center;
+      }
+      .sideview {
+        flex-basis: 20%;
+        background-color: gray;
+        color: white;
+        position: relative;
+        height: 100%;
+        flex-grow: 1;
+        padding: 20px;
+        height: auto;
+      }
+      .addbtn {
+        background-color: bisque;
+        padding: 10px;
+        border-radius: 10px;
+        color: black;
+        margin: 10px;
+        text-align: center;
+      }
+      #notetitle {
+        height: 20px;
+        border-radius: 10px;
+        height: 35px;
+        width: 90%;
+        margin: 10px;
+        padding: 10px;
+      }
+      #notecontent {
+        height: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        width: 90%;
+        margin: 10px;
+        height: 105px;
+      }
+      #mainnotecontainer {
+        display: flex;
+        flex-basis: 70%;
+        flex-grow: 4;
+        background-color: antiquewhite;
+      }
+      .notes {
+        background-color: lightblue;
+        padding: 10px;
+        display: inline-block;
+        margin: 10px;
+        height: 200px;
+        width: 200px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="header">Notes</div>
+    <div style="display: flex; flex-wrap: wrap; flex-direction: row">
+      <span class="sideview">
+        <div style="text-align: right">
+          <input type="text" id="notetitle" placeholder="Enter title" />
+          <input type="text" id="notecontent" placeholder="Content" />
+          <div class="addbtn" onclick="add_note()">Add</div>
+        </div>
+      </span>
+
+      <div
+        id="mainnotecontainer"
+        style="display: inline; position: relative"
+      ></div>
+    </div>
+  </body>
+  <script>
+    var count = 0;
+    function add_note() {
+      var notes = document.createElement("div");
+      notes.id = "notes" + count;
+      notes.className = "notes";
+
+      var notestitle = document.createElement("h1");
+      notestitle.textContent = document.getElementById("notetitle").value;
+
+      var notescontent = document.createElement("p");
+      notescontent.textContent = document.getElementById("notecontent").value;
+
+      document.getElementById("mainnotecontainer").appendChild(notes);
+      document.getElementById("notes" + count).appendChild(notestitle);
+      document.getElementById("notes" + count).appendChild(notescontent);
+      count++;
+    }
+  </script>
+</html>
